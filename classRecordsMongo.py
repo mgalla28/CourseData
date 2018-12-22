@@ -1,6 +1,7 @@
 # Creates a MongoDB of classes that I might take and their schedule information
 # Michael Gallagher 12-4-18
 from pymongo import MongoClient
+from subprocess import call
 
 
 def takeData():
@@ -28,7 +29,7 @@ def takeData():
         inputCheck: str = input("Do you have more to add y/n? ")
         if inputCheck == 'n':
             check = False
-
+    call(['net stop MongoDB'])
 
 def main():
     takeData()

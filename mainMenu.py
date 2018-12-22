@@ -1,9 +1,11 @@
 import tkinter as tk
 import os
-
-class mainMenu(tk.Frame):
+import subprocess
+import sys
+class mainMenu(tk.Tk):
     def __init__(self,master=None):
-        tk.Frame.__init__(self,master)
+        tk.Tk.__init__(self,master)
+        subprocess.Popen('C:/\"Program Files\"/MongoDB/Server/4.0/bin/mongod.exe',shell=True)
         self.grid()
         self.createWidgets()
 
@@ -16,11 +18,13 @@ class mainMenu(tk.Frame):
         self.queryButton.grid()
 
     def inputEvent(self):
-        os.system(os.getcwd() + '/classRecordsMongo.py')
+        subprocess.call(os.getcwd() + '/classRecordsMongo.py')
+        self.destroy()
 
     def queryEvent(self):
-        return
+        self.destroy()
+        sys.exit(0)
 
 app = mainMenu()
-app.master.title('Main Menu')
+app.title('Main Menu')
 app.mainloop()
